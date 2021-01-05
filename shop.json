@@ -1,0 +1,12 @@
+{
+  "shopWork": {
+    "warehousProducts": {
+      "alcohol": 1
+    },
+    "shopRoomProducts": {
+      "alcohol": 123
+    },
+    "day": 14,
+    "workDays": 14
+  }
+}

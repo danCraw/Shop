@@ -1,6 +1,4 @@
-package oop.kurs2.shop;
-
-import oop.kurs2.shop.model.ProductsType;
+package oop.kurs2.shop.model;
 
 import java.util.HashMap;
 import java.util.Map;

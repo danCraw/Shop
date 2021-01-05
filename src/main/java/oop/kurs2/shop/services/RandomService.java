@@ -1,4 +1,4 @@
-package oop.kurs2.shop;
+package oop.kurs2.shop.services;
 
 public class RandomService {
      public int fromTo(int min, int max) {

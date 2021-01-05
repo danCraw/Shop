@@ -1,6 +1,6 @@
-package oop.kurs2.shop;
+package oop.kurs2.shop.services;
 
-import oop.kurs2.shop.model.ProductLocation;
+
 import oop.kurs2.shop.model.ProductsType;
 
 import java.util.*;
@@ -24,8 +24,8 @@ public class ShowService {
 
     @SafeVarargs
     private static void initProducts(Set<ProductsType> productsTypesInShop, Map<ProductsType, Integer>... placeMap) {
-        for (int i = 0; i < placeMap.length; i++) {
-            productsTypesInShop.addAll(placeMap[i].keySet());
+        for (Map<ProductsType, Integer> productsTypeIntegerMap : placeMap) {
+            productsTypesInShop.addAll(productsTypeIntegerMap.keySet());
         }
     }
 

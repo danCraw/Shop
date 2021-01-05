@@ -1,8 +1,10 @@
-package oop.kurs2.shop;
+package oop.kurs2.shop.services;
 
+import oop.kurs2.shop.json.JSon;
 import oop.kurs2.shop.model.ProductLocation;
 import oop.kurs2.shop.model.ProductsType;
 
+import java.io.IOException;
 import java.util.*;
 
 public class EventsService {
@@ -121,5 +123,13 @@ public class EventsService {
         RandomService random = new RandomService();
         ArrayList<ProductsType> productsTypes = new ArrayList<>(Arrays.asList(ProductsType.values()));
         return productsTypes.get(random.fromTo(0, productsTypes.size() - 1));
+    }
+
+    public void writeToJson(ShopWorkService shopWorkService) {
+        try {
+            new JSon().serialize(shopWorkService, "shop.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

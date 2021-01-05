@@ -1,10 +1,10 @@
-package oop.kurs2.shop;
+package oop.kurs2.shop.services;
 
+import oop.kurs2.shop.json.JSon;
 import oop.kurs2.shop.model.ProductLocation;
-import oop.kurs2.shop.model.ProductsType;
+import oop.kurs2.shop.model.ShopWork;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
 public class ShopWorkService {
 
@@ -12,10 +12,12 @@ public class ShopWorkService {
     private static ShopWorkService shopWorkService;
 
     public void start() {
+        JSon jSon = new JSon();
         shopWorkService = this;
-        for (int i = 0; i < shopWork.getWorkDays(); i++) {
+        for (int i = 0; i <= shopWork.getWorkDays(); i++) {
             shopWork.setDay(i);
            spendWorkDay();
+            writeToJson(jSon);
         }
     }
 
@@ -29,6 +31,15 @@ public class ShopWorkService {
         System.out.println("Цены :");
         ShowService.showPrices(shopWork.getWarehousProducts(), shopWork.getShopRoomProducts());
         events.startRandomEvent();
+    }
+
+    public void writeToJson(JSon jSon) {
+        try {
+            jSon.serialize(shopWorkService, "shop.json");
+            jSon.deserialize("shop.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getDay() {
